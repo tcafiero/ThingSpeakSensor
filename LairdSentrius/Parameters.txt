@@ -1,0 +1,29 @@
+Device EUI
+0025CA0A00002DC0
+
+Application EUI
+f9c60ecea3adc6bd
+
+App Key
+D4D343FC693A0840D0AF8272FEB753B8
+
+
+
+ttn - MQTT Settings:
+server: eu.thethings.network
+Username: iotwapplication002
+Password: ttn-account-v2.l6YIDmeF8LJBnjpZF0iVzqcGQnGTLaIkvdEUtv9SHxg
+
+
+http://localhost:1880/ui
+
+
+
+
+Setup "The Things Network"
+
+Login
+Using the browser open the page:
+https://console.thethingsnetwork.org/
+email or username: tcafiero@iothingsware.com
+password: Simone01

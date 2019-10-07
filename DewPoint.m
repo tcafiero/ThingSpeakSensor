@@ -32,14 +32,14 @@ writeAPIKey = '5XB2I9UBNJFD32Q8';
 % Get latest temperature data from the MathWorks Weather Station channel.
 % Learn more about the THINGSPEAKREAD function by going to the Documentation tab on
 % the right side pane of this page.
-
-[temp,time] = thingSpeakRead(readChannelID, 'Fields', TemperatureFieldID, 'NumMinutes', 60);
-
+[temp,time] = thingSpeakRead(readChannelID, 'Fields', TemperatureFieldID, 'NumPoints', 60);
 % Get latest humidity data from the MathWorks Weather Station channel
-humidity = thingSpeakRead(readChannelID, 'Fields', HumidityFieldID, 'NumMinutes', 60);
+humidity = thingSpeakRead(readChannelID, 'Fields', HumidityFieldID, 'NumPoints', 60);
 
 % Convert temperature from Fahrenheit to Celsius
-tempC = (5/9)*(temp-32);
+
+%tempC = (5/9)*(temp-32);
+tempC = temp;
 
 % Calculate dew point
 
@@ -52,9 +52,14 @@ gamma = log(humidity/100) + b*tempC ./ (c+tempC);
 dewPoint = c*gamma ./ (b-gamma);
 % Convert to dew point in Fahrenheit
 dewPointF = (dewPoint*1.8) + 32;
-
-display(dewPointF, 'Dew point')
-
+plot(time,tempC);
+plot(time,dewPoint);
+display(dewPoint, 'Dew point')
+display(tempC, 'temp');
+display(humidity, 'Humidity');
+txt = jsonencode({time, temp, humidity});
+display(txt, 'JSON');
+display(time, 'time')
 % Write the dew point value to another channel specified by the
 % 'writeChannelID' variable
 
